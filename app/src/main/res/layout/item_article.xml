@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/dp_20"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:layout_height="wrap_content">
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/dp_16"
+        android:id="@+id/item_article_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_article_title"
+        android:textSize="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_20"
+        android:id="@+id/item_article_show_num"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:layout_width="@dimen/dp_12"
+        android:background="@mipmap/eye"
+        android:layout_marginLeft="@dimen/dp_5"
+        app:layout_constraintLeft_toRightOf="@+id/item_article_show_num"
+        app:layout_constraintBottom_toBottomOf="@+id/item_article_show_num"
+        app:layout_constraintTop_toTopOf="@+id/item_article_show_num"
+        android:layout_height="@dimen/dp_12"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
