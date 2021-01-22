@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         homeViewModel= ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.categoryList.observe(this, Observer {

@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yun.interview.MyApplication
 import com.yun.interview.api.ApiServiceManager
 import com.yun.interview.model.CategoryModel
 import com.yun.interview.model.dataConvert
@@ -29,7 +30,7 @@ class HomeViewModel : ViewModel(){
                 }
                 categoryList.value = data
             }catch (e:Exception){
-
+                Toast.makeText(MyApplication.getInstance().baseContext, e.message, Toast.LENGTH_SHORT).show()
             }
         }
     }

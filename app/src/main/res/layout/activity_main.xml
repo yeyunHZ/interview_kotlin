@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/color_E5F4F1"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/home_icon"
-        android:layout_width="@dimen/dp_70"
-        android:layout_height="@dimen/dp_70"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
         android:layout_marginTop="@dimen/dp_50"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,9 +32,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_15"
         android:layout_marginTop="@dimen/dp_30"
-        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_15"
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/home_list"
         app:layout_constraintRight_toRightOf="parent"
