@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/color_E7E7E7"
     tools:context=".ListActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/tool_bar"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="@dimen/dp_50"/>
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"

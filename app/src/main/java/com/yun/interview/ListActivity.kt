@@ -3,6 +3,7 @@ package com.yun.interview
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -39,6 +40,10 @@ class ListActivity : AppCompatActivity(), BGARefreshLayout.BGARefreshLayoutDeleg
     }
 
     fun initView() {
+        binding.toolBar.title = categoryModel.name
+        setSupportActionBar(binding.toolBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
         binding.refreshLayout.setDelegate(this)
         val stickinessRefreshViewHolder =
             MyBGAStickinessRefreshViewHolder(this, true)
@@ -75,6 +80,14 @@ class ListActivity : AppCompatActivity(), BGARefreshLayout.BGARefreshLayoutDeleg
             binding.refreshLayout.endRefreshing()
             binding.refreshLayout.endLoadingMore()
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==android.R.id.home){
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onResume() {
