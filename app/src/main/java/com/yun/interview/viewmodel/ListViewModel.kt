@@ -21,7 +21,7 @@ class ListViewModel : ViewModel() {
     /**
      * 获取题目列表
      */
-    fun getCategoryList(
+    fun getArticleList(
         categoryId: Int,
         page: Int
     ) {
@@ -32,6 +32,31 @@ class ListViewModel : ViewModel() {
                         .dataConvert()
                 }
                 articleList.value = data.list
+            } catch (e: Exception) {
+                Toast.makeText(
+                    MyApplication.getInstance().baseContext,
+                    e.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+
+    /**
+     * 搜索题目列表
+     */
+    fun searchArticleList(
+        categoryId: Int,
+        key: String
+    ) {
+        viewModelScope.launch {
+            try {
+                val data = withContext(Dispatchers.IO) {
+                    ApiServiceManager.getInstance().getApiService().searchArticleList(categoryId, key)
+                        .dataConvert()
+                }
+                articleList.value = data
             } catch (e: Exception) {
                 Toast.makeText(
                     MyApplication.getInstance().baseContext,

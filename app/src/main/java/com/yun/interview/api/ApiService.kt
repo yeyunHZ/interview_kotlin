@@ -29,4 +29,16 @@ interface ApiService {
         @Query("page") page: Int
     ): BaseModel<ArticleListModel>
 
+
+    /**
+     * 搜索文章列表
+     */
+    @GET("article/search")
+    suspend fun searchArticleList(
+        @Query("categoryId") categoryId: Int,
+        @Query("keyWord") keyWord: String
+    ): BaseModel<List<ArticleModel>>
+
+
+
 }

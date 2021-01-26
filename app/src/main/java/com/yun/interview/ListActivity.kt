@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +19,7 @@ import com.yun.interview.model.ArticleModel
 import com.yun.interview.model.CategoryModel
 import com.yun.interview.view.MyBGAStickinessRefreshViewHolder
 import com.yun.interview.viewmodel.ListViewModel
+import androidx.appcompat.widget.SearchView.OnQueryTextListener as OnQueryTextListener1
 
 /**
  * 列表页
@@ -45,6 +48,25 @@ class ListActivity : AppCompatActivity(), BGARefreshLayout.BGARefreshLayoutDeleg
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         binding.refreshLayout.setDelegate(this)
+        binding.listSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(key: String?): Boolean {
+                if(key!!.isNotEmpty()){
+                    isRefreshing = true
+                    page = 1
+                    listViewModel.searchArticleList(categoryModel.id,key!!)
+                }else{
+                    Toast.makeText(MyApplication.getInstance().baseContext, "请输入搜索内容", Toast.LENGTH_SHORT).show()
+                }
+                return false
+            }
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+        })
+        binding.listSearch.setOnCloseListener {
+            binding.refreshLayout.beginRefreshing()
+            false
+        }
         val stickinessRefreshViewHolder =
             MyBGAStickinessRefreshViewHolder(this, true)
         stickinessRefreshViewHolder.setStickinessColor(R.color.color_3678FF)
@@ -107,14 +129,14 @@ class ListActivity : AppCompatActivity(), BGARefreshLayout.BGARefreshLayoutDeleg
     override fun onBGARefreshLayoutBeginLoadingMore(refreshLayout: BGARefreshLayout?): Boolean {
         isRefreshing = false
         page += 1
-        listViewModel.getCategoryList(categoryModel.id, page)
+        listViewModel.getArticleList(categoryModel.id, page)
         return true
     }
 
     override fun onBGARefreshLayoutBeginRefreshing(refreshLayout: BGARefreshLayout?) {
         isRefreshing = true
         page = 1
-        listViewModel.getCategoryList(categoryModel.id, page)
+        listViewModel.getArticleList(categoryModel.id, page)
     }
 
 }
