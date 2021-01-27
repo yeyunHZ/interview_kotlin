@@ -1,9 +1,6 @@
 package com.yun.interview.api
 
-import com.yun.interview.model.ArticleListModel
-import com.yun.interview.model.ArticleModel
-import com.yun.interview.model.BaseModel
-import com.yun.interview.model.CategoryModel
+import com.yun.interview.model.*
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.GET
@@ -38,6 +35,16 @@ interface ApiService {
         @Query("categoryId") categoryId: Int,
         @Query("keyWord") keyWord: String
     ): BaseModel<List<ArticleModel>>
+
+
+    /**
+     * 获取文章详情
+     */
+    @GET("/article/info")
+    suspend fun getArticleDetail(
+        @Query("categoryId") categoryId: Int,
+        @Query("articleId") articleId: Int
+    ): BaseModel<ArticleDetailModel>
 
 
 

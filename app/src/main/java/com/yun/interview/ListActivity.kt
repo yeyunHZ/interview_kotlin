@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -97,6 +98,11 @@ class ListActivity : AppCompatActivity(), BGARefreshLayout.BGARefreshLayoutDeleg
                     listAdapter!!.articleList.addAll(listViewModel.articleList.value!!)
                     listAdapter!!.notifyDataSetChanged()
                 }
+            }
+            listAdapter!!.onClickListener = View.OnClickListener {
+                var articleModel:ArticleModel = it.tag as ArticleModel
+                ArticleDetailActivity.start(articleModel,this)
+
             }
             isRefreshing = false
             binding.refreshLayout.endRefreshing()

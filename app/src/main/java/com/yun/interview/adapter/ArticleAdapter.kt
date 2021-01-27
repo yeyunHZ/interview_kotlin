@@ -32,6 +32,7 @@ class ArticleAdapter(var articleList: ArrayList<ArticleModel>) :
         fun bind(articleModel: ArticleModel,onClickListener:View.OnClickListener?) {
             itemCategoryBinding.itemArticleTitle.text = articleModel.title
             itemCategoryBinding.itemArticleShowNum.text = articleModel.viewNum.toString()
+            itemCategoryBinding.root.tag = articleModel
             itemCategoryBinding.root.setOnClickListener(onClickListener)
         }
 
